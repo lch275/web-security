@@ -1,0 +1,41 @@
+# Local environment variables
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+!.env.*.example
+!.env.*.sample
+!.env.*.template
+
+# Spring / Java
+.gradle/
+build/
+target/
+*.class
+
+# NestJS / Express
+node_modules/
+dist/
+*.tsbuildinfo
+npm-debug.log*
+
+# FastAPI / Django
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+db.sqlite3
+db.sqlite3-journal
+
+# Coverage and OS files
+coverage/
+.coverage
+.coverage.*
+htmlcov/
+.DS_Store
+Thumbs.db
