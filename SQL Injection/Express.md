@@ -2,11 +2,11 @@
 
 ## MySQL 예제 환경
 
-[Java와 Spring 예제](Spring.md#mysql-예제-환경)와 같은 MySQL 8.4의 `customer_db.customers` 테이블을 사용한다. 예제는 Express 5와 `mysql2`를 설치한 Node.js 프로젝트의 ES 모듈에서 실행한다. 연결 풀은 `localhost:3306`을 사용하고, 계정 정보는 환경 변수에서 읽는다. [MySQL2 연결 풀](https://sidorares.github.io/node-mysql2/docs/examples/connections/create-pool)
+[Java와 Spring 예제](Spring.md#mysql-예제-환경)와 같은 MySQL 8.4의 `customer_db.customers` table을 사용한다. 예제는 Express 5와 `mysql2`를 설치한 Node.js 프로젝트의 ES module에서 실행한다. connection pool은 `localhost:3306`을 사용하고, 계정 정보는 environment variable에서 읽는다. [MySQL2 Connection Pool](https://sidorares.github.io/node-mysql2/docs/examples/connections/create-pool)
 
-## 요청값 검증과 값 바인딩
+## Input Validation과 Parameter Binding
 
-`req.query.lastName`은 클라이언트가 바꿀 수 있고, 쿼리 파서에 따라 배열이나 객체가 될 수 있다. 단일 문자열인지 확인한 뒤 길이와 공백을 검사한다. 검증을 통과한 값은 `mysql2`의 `execute()`에 별도 배열로 전달한다. `supportBigNumbers`와 `bigNumberStrings`를 사용해 MySQL `BIGINT` ID를 JavaScript 문자열로 반환한다. [Express 요청 API](https://expressjs.com/en/api/request/) · [MySQL2 준비된 문](https://sidorares.github.io/node-mysql2/docs/documentation/prepared-statements)
+`req.query.lastName`은 클라이언트가 바꿀 수 있고, query parser에 따라 배열이나 객체가 될 수 있다. 단일 문자열인지 확인한 뒤 길이와 공백을 검사한다. 검증을 통과한 값은 `mysql2`의 `execute()`에 별도 배열로 전달한다. `supportBigNumbers`와 `bigNumberStrings`를 사용해 MySQL `BIGINT` ID를 JavaScript 문자열로 반환한다. [Express Request API](https://expressjs.com/en/api/request/) · [MySQL2 Prepared Statements](https://sidorares.github.io/node-mysql2/docs/documentation/prepared-statements)
 
 ```javascript
 import express from 'express';
@@ -39,11 +39,11 @@ app.get('/customers/search', async (req, res) => {
 app.listen(3000);
 ```
 
-`/customers/search?lastName=O%27Connor`에서 `O'Connor`는 성을 비교하는 값으로 사용된다. 세미콜론이나 SQL 주석 표기가 들어와도 값 전체가 `?`에 바인딩되므로 기존 조회 조건이 유지된다. 일치하는 성이 없으면 빈 목록을 반환한다. [MySQL 준비된 문](https://dev.mysql.com/doc/refman/8.4/en/prepare.html)
+`/customers/search?lastName=O%27Connor`에서 `O'Connor`는 성을 비교하는 값으로 사용된다. 세미콜론이나 SQL 주석 표기가 들어와도 값 전체가 `?`에 바인딩되므로 기존 조회 조건이 유지된다. 일치하는 성이 없으면 빈 목록을 반환한다. [MySQL Prepared Statements](https://dev.mysql.com/doc/refman/8.4/en/prepare.html)
 
-## 동적 정렬과 검색 조건
+## Dynamic Sorting과 검색 조건
 
-`ORDER BY`에 사용할 컬럼과 정렬 방향은 코드에서 정한다. 아래는 라우트 핸들러에서 요청 키를 고정 정렬식에 매핑하는 예제다. 허용된 키를 확인한 후에만 해당 정렬식을 SQL에 넣는다.
+`ORDER BY`에 사용할 column과 정렬 방향은 코드에서 정한다. 아래는 route handler에서 요청 키를 고정 정렬식에 매핑하는 예제다. 허용된 키를 확인한 후에만 해당 정렬식을 SQL에 넣는다.
 
 ```javascript
 const sortOrders = new Map([
@@ -64,7 +64,7 @@ app.get('/customers/sorted', async (req, res) => {
 
 `IN` 조회는 검증한 ID 목록의 길이만큼 `?`를 만들고 값은 별도 배열로 전달한다. 빈 목록은 빈 결과로 처리한다. `LIKE`에서 `%`와 `_`를 일반 문자로 검색할 때는 `!`, `%`, `_`를 순서대로 `!!`, `!%`, `!_`로 치환한다. 그 값 양쪽에 `%`를 붙여 `LIKE ? ESCAPE '!'`에 바인딩한다. [MySQL `LIKE`](https://dev.mysql.com/doc/refman/8.4/en/string-comparison-functions.html)
 
-## 운영과 검증
+## 운영과 테스트
 
-- 조회 계정의 권한을 필요한 테이블이나 뷰의 `SELECT`로 제한한다. `multipleStatements`는 `false`로 유지하고 단일 SQL 문의 값도 바인딩한다. [MySQL `GRANT`](https://dev.mysql.com/doc/refman/8.4/en/grant.html)
-- MySQL 통합 테스트에서 `O'Connor`는 해당 고객만 반환하고, 일치하지 않는 주석 표기 포함 문자열은 빈 결과를 반환하는지 확인한다. 누락, 빈 문자열, 중복 파라미터는 HTTP 400을 반환하는지 확인한다. 허용한 정렬 키마다 결과 순서를 확인하고 `%`와 `_`는 일반 문자로 검색되는지 확인한다.
+- 조회 계정의 권한을 필요한 table이나 view의 `SELECT`로 제한한다. `multipleStatements`는 `false`로 유지하고 단일 SQL 문의 값도 바인딩한다. [MySQL `GRANT`](https://dev.mysql.com/doc/refman/8.4/en/grant.html)
+- MySQL integration test에서 `O'Connor`는 해당 고객만 반환하고, 일치하지 않는 주석 표기 포함 문자열은 빈 결과를 반환하는지 확인한다. 누락, 빈 문자열, 중복 parameter는 HTTP 400을 반환하는지 확인한다. 허용한 sort key마다 결과 순서를 확인하고 `%`와 `_`는 일반 문자로 검색되는지 확인한다.
