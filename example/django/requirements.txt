@@ -1,0 +1,5 @@
+# 실행 의존성 (정확한 버전 고정)
+Django==5.2.19
+mysqlclient==2.3.2
+# 컨테이너(Linux) 실행용 WSGI 서버. Windows 호스트에서는 manage.py runserver를 사용한다.
+gunicorn==27.0.1 ; sys_platform != "win32"

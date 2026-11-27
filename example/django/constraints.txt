@@ -1,0 +1,9 @@
+# 전이 의존성 고정(pip install -r requirements.txt -c constraints.txt)
+# 갱신: 가상환경에서 의존성 설치 후 pip freeze 결과로 교체
+asgiref==3.13.0
+Django==5.2.19
+mysqlclient==2.3.2
+sqlparse==0.6.1
+tzdata==2026.6
+gunicorn==27.0.1
+packaging==26.4

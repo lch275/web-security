@@ -1,0 +1,2 @@
+-r requirements.txt
+# 테스트는 Django 기본 테스트 러너(unittest)를 사용하므로 추가 의존성이 없다.
