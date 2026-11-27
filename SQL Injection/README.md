@@ -19,7 +19,7 @@ SQL Injection은 외부 입력이 SQL 쿼리의 일부로 해석되어 데이터
 
 모든 예제는 같은 MySQL 8.4 스키마를 사용한다. 공통 테이블 정의는 [MySQL 예제 환경](Java.md#mysql-예제-환경)에서 확인할 수 있다.
 
-- [Java와 Spring](Java.md)
+- [Spring](Spring.md)
 - [NestJS](NestJS.md)
 - [Express](Express.md)
 - [FastAPI](FastAPI.md)
