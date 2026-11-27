@@ -1,0 +1,25 @@
+# 인증정보 (example/dbms/mysql/.env.example 만 추적)
+.env
+**/.env
+!**/.env.example
+
+# 빌드/의존성 산출물
+**/node_modules/
+**/dist/
+**/target/
+**/.venv/
+**/__pycache__/
+*.py[cod]
+**/.pytest_cache/
+*.tsbuildinfo
+**/coverage/
+
+# 테스트 결과 수집 (scripts/example.* 가 생성)
+reports/test-results/
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
