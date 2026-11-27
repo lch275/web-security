@@ -1,0 +1,4 @@
+-r requirements.txt
+# 테스트 의존성
+pytest==9.2.0
+httpx2==2.16.2
