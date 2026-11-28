@@ -1,6 +1,6 @@
 # Spring Boot 예제
 
-[`SQL Injection/Spring.md`](../../SQL%20Injection/Spring.md)를 실행 가능한 프로젝트로 구현했습니다. 문서에 버전이 명시되지 않아 단일 버전(Spring Boot 4.0.x)으로 구성했습니다.
+[`SQL Injection/Spring.md`](../../Spring.md)를 실행 가능한 프로젝트로 구현했습니다. 문서에 버전이 명시되지 않아 단일 버전(Spring Boot 4.0.x)으로 구성했습니다.
 
 | 항목 | 값 |
 | --- | --- |
@@ -35,6 +35,8 @@ spring-boot/
 ```
 
 ## 실행
+
+아래 명령은 `SQL Injection` 디렉터리에서 실행합니다.
 
 ```bash
 example/scripts/mysql.sh up

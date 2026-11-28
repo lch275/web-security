@@ -1,6 +1,6 @@
 # Express 예제
 
-[`SQL Injection/Express.md`](../../SQL%20Injection/Express.md)를 실행 가능한 프로젝트로 구현했습니다.
+[`SQL Injection/Express.md`](../../Express.md)를 실행 가능한 프로젝트로 구현했습니다.
 
 | 항목 | 값 |
 | --- | --- |
@@ -30,6 +30,8 @@ express/
 ```
 
 ## 실행
+
+아래 명령은 `SQL Injection` 디렉터리에서 실행합니다.
 
 MySQL을 먼저 기동합니다: `example/scripts/mysql.sh up` (PowerShell: `.\example\scripts\mysql.ps1 up`)
 

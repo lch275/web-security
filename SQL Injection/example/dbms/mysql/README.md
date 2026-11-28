@@ -15,7 +15,7 @@
 | `init/03-users.sh` | `{fw}_app`(DML), `{fw}_reader`(SELECT) 계정 생성 및 비밀번호 동기화 |
 | `provision.sh` | 기존 Volume에 `init/` 전체를 다시 적용 (컨테이너 내부에서 실행) |
 
-`customers` 테이블 정의는 [`SQL Injection/Spring.md`](../../../SQL%20Injection/Spring.md#mysql-예제-환경)와 같습니다.
+`customers` 테이블 정의는 [`SQL Injection/Spring.md`](../../../Spring.md#mysql-예제-환경)와 같습니다.
 
 ## 데이터베이스와 계정
 
@@ -33,7 +33,7 @@
 
 ## 실행
 
-가장 쉬운 방법은 공통 스크립트입니다. 스크립트는 자신의 위치를 기준으로 경로를 계산하므로 어느 디렉터리에서 실행해도 됩니다.
+가장 쉬운 방법은 공통 스크립트입니다. 스크립트는 자신의 위치를 기준으로 경로를 계산하므로 어느 디렉터리에서 실행해도 됩니다. 아래 예시는 `SQL Injection` 디렉터리 기준이며, `cp`/`docker compose` 명령의 상대 경로도 이 위치를 기준으로 합니다.
 
 ```bash
 cp example/dbms/mysql/.env.example example/dbms/mysql/.env   # 최초 1회, 비밀번호 변경 권장

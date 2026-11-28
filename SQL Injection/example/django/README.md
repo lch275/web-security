@@ -1,6 +1,6 @@
 # Django 예제
 
-[`SQL Injection/Django.md`](../../SQL%20Injection/Django.md)를 실행 가능한 프로젝트로 구현했습니다.
+[`SQL Injection/Django.md`](../../Django.md)를 실행 가능한 프로젝트로 구현했습니다.
 
 | 항목 | 값 |
 | --- | --- |
@@ -33,6 +33,8 @@ django/
 ```
 
 ## 실행
+
+아래 명령은 `SQL Injection` 디렉터리에서 실행합니다.
 
 ```bash
 example/scripts/mysql.sh up
