@@ -1,6 +1,6 @@
 # FastAPI 예제
 
-[`SQL Injection/FastAPI.md`](../../SQL%20Injection/FastAPI.md)를 실행 가능한 프로젝트로 구현했습니다.
+[`SQL Injection/FastAPI.md`](../../FastAPI.md)를 실행 가능한 프로젝트로 구현했습니다.
 
 | 항목 | 값 |
 | --- | --- |
@@ -28,6 +28,8 @@ fastapi/
 ```
 
 ## 실행
+
+아래 명령은 `SQL Injection` 디렉터리에서 실행합니다.
 
 ```bash
 example/scripts/mysql.sh up

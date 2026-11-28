@@ -1,5 +1,5 @@
 # 공통 MySQL 8.4 예제 환경
-# 실행: docker compose --project-directory example/dbms/mysql --env-file example/dbms/mysql/.env up -d
+# 실행 (SQL Injection 디렉터리에서): docker compose --project-directory example/dbms/mysql --env-file example/dbms/mysql/.env up -d
 # 경로는 모두 이 파일 위치를 기준으로 해석된다.
 name: web-security-example
 

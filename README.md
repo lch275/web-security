@@ -10,13 +10,13 @@
 
 | Framework | 방어 가이드 | 실행 프로젝트 | 기본 포트 |
 | --- | --- | --- | --- |
-| Spring Boot | [Spring JDBC와 JPA](SQL%20Injection/Spring.md) | [spring-boot](example/spring-boot/README.md) | 8081 |
-| NestJS | [DTO와 mysql2](SQL%20Injection/NestJS.md) | [nestjs](example/nestjs/README.md) | 8082 |
-| Express | [요청 검증과 mysql2](SQL%20Injection/Express.md) | [express](example/express/README.md) | 8083 |
-| FastAPI | [Pydantic과 Connector/Python](SQL%20Injection/FastAPI.md) | [fastapi](example/fastapi/README.md) | 8084 |
-| Django | [Django ORM과 Raw SQL](SQL%20Injection/Django.md) | [django](example/django/README.md) | 8085 |
+| Spring Boot | [Spring JDBC와 JPA](SQL%20Injection/Spring.md) | [spring-boot](SQL%20Injection/example/spring-boot/README.md) | 8081 |
+| NestJS | [DTO와 mysql2](SQL%20Injection/NestJS.md) | [nestjs](SQL%20Injection/example/nestjs/README.md) | 8082 |
+| Express | [요청 검증과 mysql2](SQL%20Injection/Express.md) | [express](SQL%20Injection/example/express/README.md) | 8083 |
+| FastAPI | [Pydantic과 Connector/Python](SQL%20Injection/FastAPI.md) | [fastapi](SQL%20Injection/example/fastapi/README.md) | 8084 |
+| Django | [Django ORM과 Raw SQL](SQL%20Injection/Django.md) | [django](SQL%20Injection/example/django/README.md) | 8085 |
 
-다섯 프로젝트는 같은 고객 API를 구현한다. 이름 검색, 부분 검색, ID 목록 조회, 정렬에서 각 framework가 입력을 검증하고 SQL에 값을 전달하는 방식을 비교할 수 있다. [프레임워크별 구현 비교](example/reports/FRAMEWORK_COMPARISON.md)
+다섯 프로젝트는 같은 고객 API를 구현한다. 이름 검색, 부분 검색, ID 목록 조회, 정렬에서 각 framework가 입력을 검증하고 SQL에 값을 전달하는 방식을 비교할 수 있다. [프레임워크별 구현 비교](SQL%20Injection/example/reports/FRAMEWORK_COMPARISON.md)
 
 ### 추가할 주제
 
@@ -24,7 +24,7 @@
 
 ## SQL Injection 예제 실행
 
-Docker와 Docker Compose v2를 준비한다. 저장소 루트에서 [환경 변수 템플릿](example/dbms/mysql/.env.example)을 같은 디렉터리의 `.env`로 복사하고 로컬 비밀번호를 설정한다. 공통 스크립트가 이 파일에서 각 앱에 필요한 DB 접속 정보를 읽는다.
+Docker와 Docker Compose v2를 준비한다. `SQL Injection` 디렉터리로 이동한 뒤(이후 명령도 같은 위치에서 실행한다) [환경 변수 템플릿](SQL%20Injection/example/dbms/mysql/.env.example)을 같은 디렉터리의 `.env`로 복사하고 로컬 비밀번호를 설정한다. 공통 스크립트가 이 파일에서 각 앱에 필요한 DB 접속 정보를 읽는다.
 
 PowerShell에서 Express 예제를 실행하려면 다음 두 명령을 사용한다. 첫 번째 명령은 공통 MySQL 8.4 컨테이너가 준비될 때까지 기다리고, 두 번째 명령은 Express 이미지를 빌드해 실행한다.
 
@@ -33,7 +33,7 @@ PowerShell에서 Express 예제를 실행하려면 다음 두 명령을 사용�
 .\example\scripts\example.ps1 docker-run express
 ```
 
-앱이 시작되면 `http://127.0.0.1:8083/health`에서 DB 연결 상태를 확인한다. 다른 앱은 위 표의 프로젝트 이름과 포트를 사용한다. Bash에서는 `bash example/scripts/mysql.sh up`과 `bash example/scripts/example.sh docker-run express`로 실행한다. [전체 실행 가이드](example/README.md)
+앱이 시작되면 `http://127.0.0.1:8083/health`에서 DB 연결 상태를 확인한다. 다른 앱은 위 표의 프로젝트 이름과 포트를 사용한다. Bash에서는 `bash example/scripts/mysql.sh up`과 `bash example/scripts/example.sh docker-run express`로 실행한다. [전체 실행 가이드](SQL%20Injection/example/README.md)
 
 | 작업 | PowerShell 명령 |
 | --- | --- |
